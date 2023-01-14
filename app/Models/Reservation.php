@@ -5,12 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\Slot;
 
 
 class Reservation extends Model
 {
-    use HasFactory, User, Slot;
+    use HasFactory;
+
+    protected $fillable = [
+        'start',
+        'end',
+        'day',
+        'slot_id',
+        'user_id'
+    ];
 
     public function user()
     {

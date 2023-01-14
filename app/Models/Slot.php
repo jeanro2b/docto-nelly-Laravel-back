@@ -8,7 +8,7 @@ use App\Models\Reservation;
 
 class Slot extends Model
 {
-    use HasFactory, Reservation;
+    use HasFactory;
 
     public function reservations()
     {

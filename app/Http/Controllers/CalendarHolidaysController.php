@@ -11,9 +11,9 @@ class CalendarHolidaysController extends Controller
 {
    
     public function holidays() {
-        // $holidays = DB::table('holidays')->get();
+        $holidays = DB::table('holidays')->get();
 
-        return 'hello World';
+        return $holidays;
     }
 
     public function define_holidays(Request $req)
