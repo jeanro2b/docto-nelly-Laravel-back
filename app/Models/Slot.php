@@ -10,6 +10,21 @@ class Slot extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'firstStartMorning',
+        'firstEndMorning',
+        'secondStartMorning',
+        'secondEndMorning',
+        'thirdStartMorning',
+        'thirdEndMorning',
+        'firstStartEvening',
+        'firstEndEvening',
+        'secondStartEvening',
+        'secondEndEvening',
+        'thirdStartEvening',
+        'thirdEndEvening'
+    ];
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);

@@ -12,9 +12,6 @@ class CalendarReservationController extends Controller
 {
     public function post_reservation(Request $req)
     {
-
-        Log::debug(auth()->user());
-        Log::debug(auth()->user()->id);
         Log::debug($req);
 
         $reservation = Reservation::create([
@@ -24,6 +21,8 @@ class CalendarReservationController extends Controller
             'user_id' => auth()->user()->id,
             'slot_id' => $req->slot_id
         ]);
+
+        Log::debug($reservation);
 
         return $reservation;
          
