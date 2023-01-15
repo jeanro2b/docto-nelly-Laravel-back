@@ -35,4 +35,38 @@ class CalendarReservationController extends Controller
         ->delete();
         return $reservations;
     }
+
+    public function get_reservations($day)
+    {
+        $reservations = DB::table('reservations')
+        ->select('start', 'end')
+        ->where('day', $day)
+        ->get();
+
+        return $reservations;
+    }
+
+    public function get_user_reservations($id)
+    {
+        $reservations = DB::table('reservations')
+        ->select('start', 'end', 'day', 'id')
+        ->where('user_id', $id)
+        ->orderBy('day', 'asc')
+        ->get();
+
+        return $reservations;
+    }
+
+    public function get_all_reservations()
+    {
+        $reservations = DB::table('reservations')
+        ->join('users', 'user_id', '=', 'users.id')
+        ->select('reservations.id', 'day', 'start', 'end', 'users.name', 'users.email')
+        ->orderBy('day', 'asc')
+        ->get();
+
+        return $reservations;
+    }
+
+
 }

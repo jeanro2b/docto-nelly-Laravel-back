@@ -21,10 +21,14 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('calendar/{day}', [CalendarSlotController::class, 'get_reservations'])
+Route::get('calendar/{day}', [CalendarReservationController::class, 'get_reservations'])
                 ->name('get_reservations');
 
-Route::get('calendar/user/{id}', [CalendarSlotController::class, 'get_user_reservations'])
+Route::get('calendar-all', [CalendarReservationController::class, 'get_all_reservations'])
+                ->middleware('admin')
+                ->name('get_reservations');
+
+Route::get('calendar/user/{id}', [CalendarReservationController::class, 'get_user_reservations'])
                 ->middleware('auth')
                 ->name('get_reservations');
 
@@ -36,11 +40,11 @@ Route::get('conges', [CalendarHolidaysController::class, 'holidays'])
 
 
 Route::post('/define-slots', [CalendarSlotController::class, 'define_slots'])
-                // ->middleware('admin')
+                ->middleware('admin')
                 ->name('define_slots');
 
 Route::post('define-holidays', [CalendarHolidaysController::class, 'define_holidays'])
-                // ->middleware('admin')
+                ->middleware('admin')
                 ->name('define_holidays');
 
 Route::post('reservation', [CalendarReservationController::class, 'post_reservation'])
@@ -48,4 +52,5 @@ Route::post('reservation', [CalendarReservationController::class, 'post_reservat
                 ->name('post_reservation');
 
 Route::delete('delete-reservation/{id}', [CalendarReservationController::class, 'delete_reservation'])
+                ->middleware('auth')
                 ->name('delete_reservation');

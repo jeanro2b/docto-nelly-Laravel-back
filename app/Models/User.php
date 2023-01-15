@@ -20,6 +20,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'phone',
+        'role',
         'name',
         'email',
         'password',
@@ -47,5 +49,10 @@ class User extends Authenticatable
     public function reservation()
     {
         return $this->hasMany(Reservation::class);
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->getAttribute('role') === $role;
     }
 }

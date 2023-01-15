@@ -9,27 +9,6 @@ use Illuminate\Support\Facades\Log;
 
 class CalendarSlotController extends Controller
 {
-    public function get_reservations($day)
-    {
-        $reservations = DB::table('reservations')
-        ->select('start', 'end')
-        ->where('day', $day)
-        ->get();
-
-        return $reservations;
-    }
-
-    public function get_user_reservations($id)
-    {
-        $reservations = DB::table('reservations')
-        ->select('start', 'end', 'day', 'id')
-        ->where('user_id', $id)
-        ->orderBy('day', 'asc')
-        ->get();
-
-        return $reservations;
-    }
-
     public function get_slots($day)
     {
         $slots = DB::table('slots')
