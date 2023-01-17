@@ -61,7 +61,7 @@ class CalendarReservationController extends Controller
     {
         $reservations = DB::table('reservations')
         ->join('users', 'user_id', '=', 'users.id')
-        ->select('reservations.id', 'day', 'start', 'end', 'users.name', 'users.email')
+        ->select('reservations.id', 'day', 'start', 'end', 'users.name', 'users.email', 'users.phone')
         ->orderBy('day', 'asc')
         ->get();
 
