@@ -22,6 +22,7 @@ class AdminMiddleware
                 return $next($request);
             } else {
                 return redirect('/')->with('message', "Accès refusé car utilisateur non admin");
+                //rajouter un code erreru pourquoi ? pour les robots de google qui vont mieux comprendre => ils ne référencerons pas les pages qu'il ne faut pas
             }
         } else {
             return redirect('/login')->with('message', "Connectez-vous en tant que Admin pour accéder aux infos");

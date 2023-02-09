@@ -19,7 +19,6 @@ class CalendarHolidaysController extends Controller
 
     public function define_holidays(Request $req)
     {
-        Log::debug($req);
 
         $holiday = Holiday::create([
             'start' => $req->start,
